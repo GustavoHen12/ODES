@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Odes</title>
+        <link rel = "stylesheet" type="text/css" href="main.css">
+    </head>
+    <body>
+        <!--Barra de ferramentas-->
+        <div class = "header">
+            <nav class = "nav_bar">
+                <ul class = "barGroup">
+                    <li class = "navBarItem"><img class="iconeNav" src  = "img/arrowBack.png"></li>
+                    <li class = "navBarItem">Configurações</li>
+                    <li class = "navBarItem">Sobre</li>
+                    <li class = "navBarItem">Ajuda</li>
+                </ul>
+            </nav>
+        </div>
+
+        <!--Barra com superior-->
+        <div class = "container barraSuperior">
+            <h1 class = "nomeTabela">Lorem ipsum doloe sit</h1>
+        </div>
+
+        <!--Formulario aluno-->
+        <div class = "formContainer">
+            <form action = "#" method="POST">
+                <fieldset>
+                    <div class = "grupo">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" style="width: 60%" value="">
+                    </div>
+                    <div class = "grupo">
+                        <label for="deficiencia">Deficiência:</label>
+                        <input type="text" id="deficiencia" name="deficiencia" style="width: 60%" value="">
+                    </div>
+                    
+                    <fieldset class = "conjunto">
+                        <div class="grupo">
+                            <label for="turno">Turno:</label>
+                            <select name="turno" id="turno">
+                                <option value="">--</option>
+                                <option value="T">T</option>
+                                <option value="M">M</option>
+                            </select>
+                        </div>
+                        <div class="grupo">
+                            <label for="turma">Turma:</label>
+                            <input type="text" id="turma" name="turma" style="width: 10em" value="">
+                        </div>
+                    </fieldset>
+
+                    <div class = "grupo">
+                        <label for="prof">Professora:</label>
+                        <input type="text" id="prof" name="prof" style="width: 60%" value="">
+                    </div>
+                    <div class = "grupo">
+                        <label for="observacoes">Observações:</label>
+                        <textarea rows="6" id="observacoes" name="observacoes" style="width: 60%" value=""></textarea>
+                    </div>
+
+                    <div class = "opcoes">
+                        <button type='button' class = "botao" onClick="sendNew()">Enviar</button>
+                        <button type='button' class = "botao" onClick="sendNew()">Cancelar</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </body>
+    <script src = "js/funcoes.js"></script>
+</html>

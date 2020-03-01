@@ -1,0 +1,27 @@
+{
+  "name": "your-app",
+  "version": "0.1.0",
+  "main": "main.js",
+  "type": "module",
+  "module": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "dist:windows": "electron-builder --windows"
+  },
+  "build": {
+    "appId": "com.teste.app",
+    "win": {
+      "target": [
+        "zip"
+      ]
+    }
+  },
+  "devDependencies": {
+    "electron": "^8.0.2",
+    "electron-builder": "^22.3.2"
+  },
+  "dependencies": {
+    "lokijs": "^1.5.8",
+    "webpack": "^4.41.6"
+  }
+}
