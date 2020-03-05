@@ -11,11 +11,10 @@ let DataControler = dataC.DataControler;
 const struct = require(path.concat("/libs/dataType"));
 let alunoData = struct.makeDataStruct("id nome turno turma prof defciencia escola");
 
-let teste = new DataControler("lista1");
+let alunos = new DataControler("listaAlunos");
 
 function sendNew()
 {
-    console.log("oi");
     let elemento = document.getElementById("nome");
     let nome = elemento.value;
     elemento = document.getElementById("deficiencia");
@@ -26,8 +25,15 @@ function sendNew()
     let turma = elemento.value;
     elemento = document.getElementById("prof");
     let prof = elemento.value;
-    let id = "1";
-    let newAluno = new alunoData(id, nome, turno, turma, prof, deficiencia);
+    let escola = document.getElementById("escola").innerHTML;   /*Alterar para algo mais seguro*/
+    let id = getNewId();
+    let newAluno = new alunoData(id, nome, turno, turma, prof, deficiencia, escola);
     console.log(newAluno);
-    teste.sendData(newAluno);
+    alunos.sendData(newAluno);
+}
+
+function getNewId()
+{
+    let dados = alunos.receiveData();
+    return ((Object.keys(dados).length)+1);
 }

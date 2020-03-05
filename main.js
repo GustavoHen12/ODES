@@ -10,7 +10,7 @@ function createWindow () {
     }
   })
 
-  win.loadFile('./main/index.html')
+  win.loadFile('./index.html')
   win.webContents.openDevTools()
   win.removeMenu();//remove o menu superior
   win.maximize();//fullscream

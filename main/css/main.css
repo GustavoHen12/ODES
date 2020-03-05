@@ -88,7 +88,7 @@ fieldset {
     float: center;
 }
 label, input, select, textarea, button {
-    font-family: 'Roboto','Segoe UI', Tahoma, Verdana, sans-serif;;
+    font-family: 'Roboto','Segoe UI', Tahoma, Verdana, sans-serif;
     font-size: 1em;
 }
 .conjunto:before, .grupo:after {
