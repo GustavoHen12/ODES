@@ -2,18 +2,15 @@ var loki = require('lokijs');
 
 class DataControler
 {
-    databaseInitialize() {
-        var entries = this.tabela.getCollection("dado");
-        if (entries === null) {
-          entries = this.tabela.addCollection("dado");
-        }
-    }
     constructor(tabela)
     {
         //cria o objeto da tabela
         //pega os dados via LokiJs
-        let directory = './data/';
+        const app = require('electron').remote.app;
+        let caminho = app.getAppPath();
+        let directory = caminho.concat('/data/');
         let nome = (directory.concat(tabela)).concat('.json');
+        console.log(nome);
         //cria base de dados
         //  ver conf. ex:https://github.com/techfort/LokiJS/blob/master/examples/quickstart2.js
         this.tabela =  new loki(nome, { 
