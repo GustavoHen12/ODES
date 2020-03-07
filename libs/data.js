@@ -61,9 +61,14 @@ class DataControler
     }
 
     //a partir de um unico dado retorna todas as informacoes
-    consultData()
+    consultData(query, sort)
     {
-
+        var coll = this.tabela.getCollection("dado");
+        if (coll === null) return null;
+        return  coll.chain()
+                    .find(query)
+                    .simplesort(sort)
+                    .data({removeMeta:true});
     }
 
 }
