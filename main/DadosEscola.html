@@ -27,7 +27,7 @@
 
         <!--Alunos-->
         <div class = "mainContainer">
-            <div class = "tabelaAlunos">
+            <div id = "container" class = "tabelaAlunos">
                 <div class = "alunoGroup">
                     <div class = "dadoAlunos">
                         <p class = "aluno">Nome do aluno da Silva</p>
@@ -37,7 +37,7 @@
                         <p class = "aluno">Def. do aluno - CID</p>
                     </div>
                     <div class = "acoesAluno">
-                        <button class = "botaoAluno"><img src="img/plus.svg"></button>
+                        <button class = "botaoAluno" onclick="teste()"><img src="img/plus.svg"></button>
                         <button class = "botaoAluno"><img src="img/relatory.svg"></button>
                         <button class = "botaoAluno"><img src="img/edit.svg"></button>
                         <button class = "botaoAluno"><img src="img/triangulo.svg"></button>
@@ -49,6 +49,16 @@
     </body>
     <script src = "js/funcoes.js"></script>
     <script>
-        /*INIT*/
+        const contr = require(path.concat("/libs/objects"));
+        let construtorAlunos = contr.construtorAlunos;
+        let construtor = new construtorAlunos();
+        function teste(){ 
+           let res = alunos.consultData({'escola': 'Escola Aleatoria 1'}, 'nome');
+            console.log(res); 
+
+            let cont = document.getElementById("container");
+            cont.appendChild(construtor.builAlunos())
+        }
+        
     </script>
 </html>
