@@ -21,11 +21,12 @@
 .alunoGroup{
     background-color: white;
     margin-top: 2em;
-    height: 2em;
+    height: auto;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .dadoAlunos, .acoesAluno{
@@ -55,4 +56,45 @@
 .acoesAluno button img {
     width: auto;
     height: 1.7em;
+}
+
+/*ADICIONA RELATORIO AREA*/
+.plusArea{
+    height: auto;
+    width: 100%;
+    background-color: white;
+    margin: 0;
+    padding: 0%;
+    display: none;
+}
+
+.opButtons{
+    background-color: #3A3E3B;
+    height: 1.5em;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.opButtons button{
+    background-color: #3A3E3B;
+    margin-right: .5em;
+    border: none;
+    color: white;
+    font-family: 'Montserrat','Segoe UI', Tahoma, Verdana, sans-serif;
+    font-size: 10pt;
+    cursor: pointer;
+}
+.inputContainer{
+    height: auto;
+    width: 100%;
+}
+.inputContainer textarea{
+    border: none;
+    background-color: #ffffff;
+    padding: .3em;
+    display: inline-block;
+    vertical-align: middle;
 }

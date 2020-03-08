@@ -28,6 +28,31 @@
         <!--Alunos-->
         <div class = "mainContainer">
             <div id = "container" class = "tabelaAlunos">
+                <div class = "alunoGroup">
+                    <div class = "dadoAlunos">
+                        <p>Nome do aluno da Silva</p>
+                        <p>M</p>
+                        <p>3°A</p>
+                        <p>Professora</p>
+                        <p>Def. do aluno - CID</p>
+                    </div>
+                    <div class = "acoesAluno">
+                        <button onclick="plusButton(12)"><img src="img/plus.svg"></button>
+                        <button><img src="img/relatory.svg"></button>
+                        <button><img src="img/edit.svg"></button>
+                        <button><img src="img/triangulo.svg"></button>
+                    </div>
+                    <div id = "12" class = "plusArea">
+                        <div class = "opButtons">
+                            <button onclick="sendRelatory()">Salvar</button>
+                            <button onclick="plusButton()">Cancelar</button>
+                        </div>
+                        <div id = "addRelatory" class = "inputContainer">
+                            <textarea rows="6" id="add12" style="width: 99%" value=""></textarea>
+                        </div>
+                    </div> 
+                </div>
+                
             </div>
         </div>
     </body>
@@ -53,8 +78,35 @@
     </script>
 
     <script>
-        function plusButton(id){
-            console.log(id);
+        function plusButton(id)
+        {
+            var ele = ('plus').concat(id);
+            var x = document.getElementById(ele);
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function sendRelatory(id)
+        {
+            //pega o id do aluno
+            let newRel = new relatorioData;
+            newRel.id = id;
+            //pega o horario do relatorio
+            var today = new Date();
+            var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            var dateTime = date+' '+time;
+            newRel.tempo = dateTime;
+            //pega o texto do relatorio
+            var ele = ('add').concat(id);
+            var textarea = document.getElementById(ele);
+            newRel.texto = textarea.value;
+            //salva
+            relatorio.sendData(newRel);
+            plusButton(id);//fecha janela
         }
     </script>
 </html>
