@@ -42,7 +42,7 @@
     margin-left: 1.5em;
 }
 
-.botaoAluno{
+.acoesAluno button{
     cursor: pointer;
     border: none;
     text-emphasis: none;
@@ -52,7 +52,7 @@
     margin-right: .5em;
 }
 
-.botaoAluno img {
+.acoesAluno button img {
     width: auto;
     height: 1.7em;
 }

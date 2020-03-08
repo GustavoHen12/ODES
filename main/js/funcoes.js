@@ -1,4 +1,4 @@
-function getPath () {
+/*function getPath () {
     const app = require('electron').remote.app;
     let caminho = app.getAppPath();
     return caminho;
@@ -11,7 +11,7 @@ let DataControler = dataC.DataControler;
 const struct = require(path.concat("/libs/dataType"));
 let alunoData = struct.makeDataStruct("id nome turno turma prof defciencia escola");
 
-let alunos = new DataControler("listaAlunos");
+let alunos = new DataControler("listaAlunos");*/
 
 function sendNew()
 {

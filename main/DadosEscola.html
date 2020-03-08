@@ -28,37 +28,33 @@
         <!--Alunos-->
         <div class = "mainContainer">
             <div id = "container" class = "tabelaAlunos">
-                <div class = "alunoGroup">
-                    <div class = "dadoAlunos">
-                        <p class = "aluno">Nome do aluno da Silva</p>
-                        <p class = "aluno">M</p>
-                        <p class = "aluno">3°A</p>
-                        <p class = "aluno">Professora</p>
-                        <p class = "aluno">Def. do aluno - CID</p>
-                    </div>
-                    <div class = "acoesAluno">
-                        <button class = "botaoAluno" onclick="teste()"><img src="img/plus.svg"></button>
-                        <button class = "botaoAluno"><img src="img/relatory.svg"></button>
-                        <button class = "botaoAluno"><img src="img/edit.svg"></button>
-                        <button class = "botaoAluno"><img src="img/triangulo.svg"></button>
-                    </div>
-                </div>
             </div>
         </div>
-
     </body>
-    <script src = "js/funcoes.js"></script>
+
+    <script src="js/iniciaObjetos.js"></script>
+
     <script>
         const contr = require(path.concat("/libs/objects"));
         let construtorAlunos = contr.construtorAlunos;
-        let construtor = new construtorAlunos();
-        function teste(){ 
-           let res = alunos.consultData({'escola': 'Escola Aleatoria 1'}, 'nome');
-            console.log(res); 
-
-            let cont = document.getElementById("container");
-            cont.appendChild(construtor.builAlunos())
-        }
+        let construtor = new construtorAlunos();//constroi objetos HTML
         
+        //tempo para iniciar a aplicacao
+        setTimeout(() => { init(); }, 1000);//  (?)     FAZER LOOP TENTANDO + PAG CARREGANDO 
+
+        function init(){  
+            //PEGAR ESCOLA DA PAGINA ANTERIOR
+            let res = alunos.consultData({'escola': 'Escola Aleatoria 1'}, 'nome');
+            let cont = document.getElementById("container");
+            //adiciona os objetos dos alunos na pagina em ordem
+            for(let i = 0; i < Object.keys(res).length; i++)
+                cont.appendChild(construtor.builAlunos(res[i]));
+        }
+    </script>
+
+    <script>
+        function plusButton(id){
+            console.log(id);
+        }
     </script>
 </html>

@@ -52,7 +52,6 @@ class DataControler
     }
 
     //retorna todos os dados do objeto no formato Javascript
-    //retorna eles ordenados
     receiveData()
     {
         var novo = this.tabela.getCollection("dado");
@@ -61,14 +60,17 @@ class DataControler
     }
 
     //a partir de um unico dado retorna todas as informacoes
+    //deve ser passado em objeto em query: {'chave':'objeto'}
+    //deve ser passado o criterio de ordem em sort: 'chave'
     consultData(query, sort)
     {
         var coll = this.tabela.getCollection("dado");
-        if (coll === null) return null;
-        return  coll.chain()
+        if (coll === null) return -1;
+        let res =  coll.chain()
                     .find(query)
                     .simplesort(sort)
                     .data({removeMeta:true});
+        return res;
     }
 
 }
