@@ -35,6 +35,17 @@ class construtorAlunos
         el.innerHTML =  domString;
         return el.firstChild;
     }
+
+    builRelatorio(relatorio)
+    {
+        var el = document.createElement('div');        
+        var domString = '<div class = "itemRelat">'+
+                            '<h4>'+relatorio.tempo+'</h4>'+
+                            '<p>'+relatorio.texto+'</p>'+
+                        '</div>';
+        el.innerHTML =  domString;
+        return el.firstChild;
+    }
 }
 
 module.exports = {construtorAlunos : construtorAlunos};

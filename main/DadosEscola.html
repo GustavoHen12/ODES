@@ -24,6 +24,14 @@
         <div class = "container barraSuperior">
             <h1 class = "nomeTabela"></h1>
         </div>
+        <!--MODAL -> Relatorio-->
+        <div id = modal class = "modalContainer">
+            <div id = "modalRelatory" class = "relatorio">
+                <div class = "modalHeader">
+                    <span class="close">&times;</span>
+                </div>
+            </div>
+        </div>
 
         <!--Alunos-->
         <div class = "mainContainer">
@@ -38,7 +46,7 @@
                     </div>
                     <div class = "acoesAluno">
                         <button onclick="plusButton(12)"><img src="img/plus.svg"></button>
-                        <button><img src="img/relatory.svg"></button>
+                        <button onclick="relatoryButton(12)"><img src="img/relatory.svg"></button>
                         <button><img src="img/edit.svg"></button>
                         <button><img src="img/triangulo.svg"></button>
                     </div>
@@ -51,8 +59,7 @@
                             <textarea rows="6" id="add12" style="width: 99%" value=""></textarea>
                         </div>
                     </div> 
-                </div>
-                
+                </div> 
             </div>
         </div>
     </body>
@@ -96,7 +103,7 @@
             newRel.id = id;
             //pega o horario do relatorio
             var today = new Date();
-            var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+            var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
             var dateTime = date+' '+time;
             newRel.tempo = dateTime;
@@ -107,6 +114,42 @@
             //salva
             relatorio.sendData(newRel);
             plusButton(id);//fecha janela
+        }
+    
+        function relatoryButton(id)
+        {
+            //pega dados
+            let dados = relatorio.consultData({"id":id}, "tempo");
+            console.log(dados);
+            let tela = document.getElementById("modalRelatory");
+
+            for(let i = 0; i < Object.keys(dados).length; i++)
+                tela.appendChild(construtor.builRelatorio(dados[i]));
+            if (Object.keys(dados).length == 0)
+            {
+                tela.appendChild(construtor.builRelatorio({"tempo":"Não a relatorios disponiveis", "texto":""}));
+            }
+            //mostra
+            var modal = document.getElementById("modal");
+            modal.style.display = "block";
+        }
+
+        var span = document.getElementsByClassName("close")[0];
+
+        span.onclick = function() {
+            modal.style.display = "none";
+            let tela = document.getElementById("modalRelatory");
+            let item = document.getElementsByClassName("itemRelat");
+            while(item.length > 0){
+                item[0].parentNode.removeChild(item[0]);
+            }
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
         }
     </script>
 </html>
