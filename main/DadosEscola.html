@@ -35,20 +35,42 @@
 
         <!--Alunos-->
         <div class = "mainContainer">
+            <div class = "editMode">
+                <div id = "edit12" class = "editaAlunos">
+                    <form class = "formularioAlunos" action = "#" method="POST">
+                        <fieldset>
+                            <input class = "inputAluno" type="text" id="nome" name="nome" style="width: 40%" value="">
+                            <select style="width: 5%" name="turno" id="turno">
+                                <option value="">--</option>
+                                <option value="T">T</option>
+                                <option value="M">M</option>
+                            </select>
+                            <input class = "inputAluno" type="text" id="turma" name="turma" style="width: 5%" value="">
+                            <input class = "inputAluno" type="text" id="prof" name="prof" style="width: 15%" value="">
+                            <input class = "inputAluno" type="text" id="deficiencia" name="deficiencia" style="width: 25%" value="">
+                        </fieldset>
+                    </form>
+                </div>
+                <div class = "opArea">
+                    <button type='button' class = "botao" onClick="sendNew()">Salvar</button>
+                    <button type='button' class = "botao" onClick="sendNew()">Cancelar</button>
+                </div>
+            </div>
             <div id = "container" class = "tabelaAlunos">
                 <div class = "alunoGroup">
-                    <div class = "dadoAlunos">
-                        <p>Nome do aluno da Silva</p>
-                        <p>M</p>
-                        <p>3°A</p>
-                        <p>Professora</p>
-                        <p>Def. do aluno - CID</p>
-                    </div>
+                    <div id ="dados12" class = "dadoAlunos">
+                        <p style="width: 45%">Nome do aluno da Silva</p>
+                        <p style="width: 5%">M</p>
+                        <p style="width: 5%">3°A</p>
+                        <p style="width: 15%">Professora</p>
+                        <p style="width: 30%">Def. do aluno - CID</p>
+                    </div>                    
                     <div class = "acoesAluno">
                         <button onclick="plusButton(12)"><img src="img/plus.svg"></button>
                         <button onclick="relatoryButton(12)"><img src="img/relatory.svg"></button>
                         <button><img src="img/edit.svg"></button>
-                        <button><img src="img/triangulo.svg"></button>
+                        <button onclick="trianguloButton(12)"><img src="img/triangulo.svg"></button>
+                        
                     </div>
                     <div id = "12" class = "plusArea">
                         <div class = "opButtons">
@@ -120,7 +142,6 @@
         {
             //pega dados
             let dados = relatorio.consultData({"id":id}, "tempo");
-            console.log(dados);
             let tela = document.getElementById("modalRelatory");
 
             for(let i = 0; i < Object.keys(dados).length; i++)
@@ -134,22 +155,38 @@
             modal.style.display = "block";
         }
 
-        var span = document.getElementsByClassName("close")[0];
+        function trianguloButton(id)
+        {
+            var edit = ('edit').concat(id);
+            var data = ('dados').concat(id);
+            var e = document.getElementById(edit);
+            var d = document.getElementById(data);
 
-        span.onclick = function() {
+            if (e.style.display === "none") {
+                e.style.display = "flex";
+                d.style.display = "none";
+            } else {
+                e.style.display = "none";
+                d.style.display = "flex";
+            }
+        }
+
+        //FECHA MODAL
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = () => fechaModal();
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                fechaModal()
+            }
+        }
+
+        function fechaModal() {
             modal.style.display = "none";
             let tela = document.getElementById("modalRelatory");
             let item = document.getElementsByClassName("itemRelat");
             while(item.length > 0){
                 item[0].parentNode.removeChild(item[0]);
             }
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
         }
     </script>
 </html>

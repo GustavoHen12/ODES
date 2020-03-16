@@ -34,13 +34,21 @@
     align-items: center;
     flex-direction: row;
     height: 2em;
-    width: auto;
+}
+.dadoAlunos{
+    width: 80%;
+}
+.acoesAluno{
+    width: 20%;
+    justify-content: space-between;
 }
 
 .dadoAlunos p{
     font-size: 11pt;
     text-align: left;
     margin-left: 1.5em;
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }
 
 .acoesAluno button{
@@ -164,4 +172,35 @@
     font-weight: 500;
     font-size: 12pt;
     color: black;
+}
+
+/*EDITA------------------------------*/
+.editaAlunos{
+    display: none;
+    align-items: center;
+    flex-direction: row;
+    height: 2em;
+    width: 80%;
+}
+
+.editaAlunos input,
+.editaAlunos select{
+    border: none;
+    background-color: #ffffff;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    font-size: 11pt;
+    text-align: left;
+    height: 1.8em;
+}
+.formularioAlunos{
+    padding-left: 1.5em;
+}
+.formularioAlunos, fieldset{
+    margin: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 2em;
+    width: 100%;
 }

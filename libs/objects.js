@@ -9,12 +9,27 @@ class construtorAlunos
     {
         var el = document.createElement('div');        
         var domString ='<div id ="'+ dado.id + '" class = "alunoGroup">' +
-                            '<div class = "dadoAlunos">'+
-                                '<p id = "Anome">'+dado.nome+'</p>'+
-                                '<p id = "Aturmo">'+dado.turno+'</p>'+
-                                '<p id = "Aano">'+dado.ano+'</p>'+
-                                '<p id = "Aprofessora">'+dado.prof+'</p>'+
-                                '<p id = "Adef">'+dado.defciencia+'</p>'+
+                            '<div id = "dados'+ dado.id +'" class = "dadoAlunos">'+
+                                '<p style="width: 45%" id = "Anome">'+dado.nome+'</p>'+
+                                '<p style="width: 5%" id = "Aturmo">'+dado.turno+'</p>'+
+                                '<p  style="width: 5%" id = "Aano">'+dado.ano+'</p>'+
+                                '<p  style="width: 15%" id = "Aprofessora">'+dado.prof+'</p>'+
+                                '<p  style="width: 30%" id = "Adef">'+dado.defciencia+'</p>'+
+                            '</div>'+
+                            '<div id = "edit'+ dado.id +'" class = "editaAlunos">'+
+                                '<form class = "formularioAlunos" action = "#" method="POST">'+
+                                    '<fieldset>'+
+                                        '<input class = "inputAluno" type="text" id="nome" name="nome" style="width: 40%" value="'+dado.nome+'">'+
+                                        '<select style="width: 5%" name="turno" id="turno">'+
+                                            '<option value="">--</option>'+
+                                            '<option value="T">T</option>'+
+                                            '<option value="M">M</option>'+
+                                        '</select>'+
+                                        '<input class = "inputAluno" type="text" id="turma" name="turma" style="width: 5%" value="'+dado.ano+'">'+
+                                        '<input class = "inputAluno" type="text" id="prof" name="prof" style="width: 15%" value="'+dado.prof+'">'+
+                                        '<input class = "inputAluno" type="text" id="deficiencia" name="deficiencia" style="width: 25%" value="'+dado.defciencia+'">'+
+                                    '</fieldset>'+
+                                '</form>'+
                             '</div>'+
                             '<div class = "acoesAluno">'+
                                 '<button id = "plusButton" class = "botaoAluno" onclick="plusButton('+ dado.id +')"><img src="img/plus.svg"></button>'+
