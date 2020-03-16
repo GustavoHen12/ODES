@@ -141,7 +141,7 @@ label, input, select, textarea, button {
     padding-right: 10em;
 }
 .botao {
-    margin-top: 4em;
+    
     background-color: #9055A2;
     color: #F0EFF4;
     text-emphasis: none;
@@ -156,7 +156,9 @@ label, input, select, textarea, button {
     padding-left: 1em;
     padding-right: 1em;
 }
-
+.alignBotao{
+    margin-top: 4em;
+}
 .botao:hover{
     background-color: #291528;
 }

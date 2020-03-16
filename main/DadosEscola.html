@@ -35,7 +35,7 @@
 
         <!--Alunos-->
         <div class = "mainContainer">
-            <div class = "editMode">
+            <div id = "containerEdit" class = "editMode" style="display: none;">
                 <div id = "edit12" class = "editaAlunos">
                     <form class = "formularioAlunos" action = "#" method="POST">
                         <fieldset>
@@ -51,12 +51,18 @@
                         </fieldset>
                     </form>
                 </div>
+                
                 <div class = "opArea">
-                    <button type='button' class = "botao" onClick="sendNew()">Salvar</button>
-                    <button type='button' class = "botao" onClick="sendNew()">Cancelar</button>
+                    <button type='button' class = "botao" style="margin-right: 2em;" onClick="sendNew()">Salvar</button>
+                    <button type='button' class = "botao" style="margin-right: 2em;" onClick="sendNew()">Cancelar</button>
                 </div>
             </div>
+
             <div id = "container" class = "tabelaAlunos">
+                <div class = "buttonArea">
+                    <button type='button' class = "botao" style="margin-right: 2em;" onClick="editMode()">Editar</button>
+                    <button type='button' class = "botao" style="margin-right: 2em;" onClick="Reload()">Recarregar</button>
+                </div>
                 <div class = "alunoGroup">
                     <div id ="dados12" class = "dadoAlunos">
                         <p style="width: 45%">Nome do aluno da Silva</p>
@@ -69,9 +75,8 @@
                         <button onclick="plusButton(12)"><img src="img/plus.svg"></button>
                         <button onclick="relatoryButton(12)"><img src="img/relatory.svg"></button>
                         <button><img src="img/edit.svg"></button>
-                        <button onclick="trianguloButton(12)"><img src="img/triangulo.svg"></button>
-                        
                     </div>
+
                     <div id = "12" class = "plusArea">
                         <div class = "opButtons">
                             <button onclick="sendRelatory()">Salvar</button>
@@ -103,6 +108,15 @@
             //adiciona os objetos dos alunos na pagina em ordem
             for(let i = 0; i < Object.keys(res).length; i++)
                 cont.appendChild(construtor.builAlunos(res[i]));
+        }
+
+        function initEditMode()
+        {
+            let res = alunos.consultData({'escola': 'Escola Aleatoria 1'}, 'nome');
+            let cont = document.getElementById("containerEdit");
+            //adiciona os objetos dos alunos na pagina em ordem
+            for(let i = 0; i < Object.keys(res).length; i++)
+                cont.appendChild(construtor.builAlunosEdit(res[i]));
         }
     </script>
 

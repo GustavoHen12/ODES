@@ -16,26 +16,11 @@ class construtorAlunos
                                 '<p  style="width: 15%" id = "Aprofessora">'+dado.prof+'</p>'+
                                 '<p  style="width: 30%" id = "Adef">'+dado.defciencia+'</p>'+
                             '</div>'+
-                            '<div id = "edit'+ dado.id +'" class = "editaAlunos">'+
-                                '<form class = "formularioAlunos" action = "#" method="POST">'+
-                                    '<fieldset>'+
-                                        '<input class = "inputAluno" type="text" id="nome" name="nome" style="width: 40%" value="'+dado.nome+'">'+
-                                        '<select style="width: 5%" name="turno" id="turno">'+
-                                            '<option value="">--</option>'+
-                                            '<option value="T">T</option>'+
-                                            '<option value="M">M</option>'+
-                                        '</select>'+
-                                        '<input class = "inputAluno" type="text" id="turma" name="turma" style="width: 5%" value="'+dado.ano+'">'+
-                                        '<input class = "inputAluno" type="text" id="prof" name="prof" style="width: 15%" value="'+dado.prof+'">'+
-                                        '<input class = "inputAluno" type="text" id="deficiencia" name="deficiencia" style="width: 25%" value="'+dado.defciencia+'">'+
-                                    '</fieldset>'+
-                                '</form>'+
-                            '</div>'+
+                            
                             '<div class = "acoesAluno">'+
                                 '<button id = "plusButton" class = "botaoAluno" onclick="plusButton('+ dado.id +')"><img src="img/plus.svg"></button>'+
                                 '<button id = "relatoryButton" onclick="relatoryButton('+ dado.id + ')"><img src="img/relatory.svg"></button>'+
                                 '<button id = "editButton" onclick="editButton('+ dado.id + ')"><img src="img/edit.svg"></button>'+
-                                '<button id = "trianguloButton" onclick="trianguloButton('+ dado.id + ')"><img src="img/triangulo.svg"></button>'+
                             '</div>'+
                             '<div id = "plus'+ dado.id + '"class = "plusArea">'+
                                 '<div class = "opButtons">'+
@@ -47,6 +32,7 @@ class construtorAlunos
                                 '</div>'+
                             '</div>' +
                         '</div>';
+        //'<button id = "trianguloButton" onclick="trianguloButton('+ dado.id + ')"><img src="img/triangulo.svg"></button>'+
         el.innerHTML =  domString;
         return el.firstChild;
     }
@@ -60,6 +46,29 @@ class construtorAlunos
                         '</div>';
         el.innerHTML =  domString;
         return el.firstChild;
+    }
+
+    builAlunosEdit(dado)
+    {
+        var el = document.createElement('div');        
+        var domString = '<div id = "edit'+ dado.id +'" class = "editaAlunos">'+
+                        '<form class = "formularioAlunos" action = "#" method="POST">'+
+                            '<fieldset>'+
+                                '<input class = "inputAluno" type="text" id="nome" name="nome" style="width: 40%" value="'+dado.nome+'">'+
+                                '<select style="width: 5%" name="turno" id="turno" value="'+dado.turno+'">'+
+                                    '<option value="">--</option>'+
+                                    '<option value="T">T</option>'+
+                                    '<option value="M">M</option>'+
+                                '</select>'+
+                                '<input class = "inputAluno" type="text" id="turma" name="turma" style="width: 5%" value="'+dado.ano+'">'+
+                                '<input class = "inputAluno" type="text" id="prof" name="prof" style="width: 15%" value="'+dado.prof+'">'+
+                                '<input class = "inputAluno" type="text" id="deficiencia" name="deficiencia" style="width: 25%" value="'+dado.defciencia+'">'+
+                            '</fieldset>'+
+                        '</form>'+
+                    '</div>';
+        el.innerHTML =  domString;
+        return el.firstChild;
+        
     }
 }
 
