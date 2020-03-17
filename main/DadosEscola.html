@@ -36,6 +36,11 @@
         <!--Alunos-->
         <div class = "mainContainer">
             <div id = "containerEdit" class = "editMode" style="display: none;">
+                <div class = "buttonArea">
+                    <button type='button' class = "botao" style="margin-right: 2em;" onClick="sendNew()">Salvar</button>
+                    <button type='button' class = "botao" style="margin-right: 2em;" onClick="viewMode()">Cancelar</button>
+                </div>
+
                 <div id = "edit12" class = "editaAlunos">
                     <form class = "formularioAlunos" action = "#" method="POST">
                         <fieldset>
@@ -50,11 +55,6 @@
                             <input class = "inputAluno" type="text" id="deficiencia" name="deficiencia" style="width: 25%" value="">
                         </fieldset>
                     </form>
-                </div>
-                
-                <div class = "opArea">
-                    <button type='button' class = "botao" style="margin-right: 2em;" onClick="sendNew()">Salvar</button>
-                    <button type='button' class = "botao" style="margin-right: 2em;" onClick="sendNew()">Cancelar</button>
                 </div>
             </div>
 
@@ -113,6 +113,7 @@
         function initEditMode()
         {
             let res = alunos.consultData({'escola': 'Escola Aleatoria 1'}, 'nome');
+            console.log(res);
             let cont = document.getElementById("containerEdit");
             //adiciona os objetos dos alunos na pagina em ordem
             for(let i = 0; i < Object.keys(res).length; i++)
@@ -169,22 +170,36 @@
             modal.style.display = "block";
         }
 
-        function trianguloButton(id)
+        function editMode()
         {
-            var edit = ('edit').concat(id);
-            var data = ('dados').concat(id);
-            var e = document.getElementById(edit);
-            var d = document.getElementById(data);
-
-            if (e.style.display === "none") {
-                e.style.display = "flex";
-                d.style.display = "none";
-            } else {
-                e.style.display = "none";
-                d.style.display = "flex";
+            //pega os elementos
+            var view = document.getElementById("container");
+            var edit = document.getElementById("containerEdit");
+            //deixa a tabela de alunos invisivel
+            //e a tabela de edicao visivel
+            view.style.display = "none";
+            edit.style.display = "block";
+            //limpa "cache" da pagina de edicao
+            let item = document.getElementsByClassName("editaAlunos");
+            while(item.length > 0){
+                item[0].parentNode.removeChild(item[0]);
             }
+            //inicia o modo de edicao
+            initEditMode();
         }
 
+        function viewMode()
+        {
+            var view = document.getElementById("container");
+            var edit = document.getElementById("containerEdit");
+            view.style.display = "block";
+            edit.style.display = "none";
+            let item = document.getElementsByClassName("alunoGroup");
+            while(item.length > 0){
+                item[0].parentNode.removeChild(item[0]);
+            }
+            init();
+        }
         //FECHA MODAL
         var span = document.getElementsByClassName("close")[0];
         span.onclick = () => fechaModal();

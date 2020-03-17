@@ -12,7 +12,7 @@ class construtorAlunos
                             '<div id = "dados'+ dado.id +'" class = "dadoAlunos">'+
                                 '<p style="width: 45%" id = "Anome">'+dado.nome+'</p>'+
                                 '<p style="width: 5%" id = "Aturmo">'+dado.turno+'</p>'+
-                                '<p  style="width: 5%" id = "Aano">'+dado.ano+'</p>'+
+                                '<p  style="width: 5%" id = "Aano">'+dado.turma+'</p>'+
                                 '<p  style="width: 15%" id = "Aprofessora">'+dado.prof+'</p>'+
                                 '<p  style="width: 30%" id = "Adef">'+dado.defciencia+'</p>'+
                             '</div>'+
@@ -60,7 +60,7 @@ class construtorAlunos
                                     '<option value="T">T</option>'+
                                     '<option value="M">M</option>'+
                                 '</select>'+
-                                '<input class = "inputAluno" type="text" id="turma" name="turma" style="width: 5%" value="'+dado.ano+'">'+
+                                '<input class = "inputAluno" type="text" id="turma" name="turma" style="width: 5%" value="'+dado.turma+'">'+
                                 '<input class = "inputAluno" type="text" id="prof" name="prof" style="width: 15%" value="'+dado.prof+'">'+
                                 '<input class = "inputAluno" type="text" id="deficiencia" name="deficiencia" style="width: 25%" value="'+dado.defciencia+'">'+
                             '</fieldset>'+

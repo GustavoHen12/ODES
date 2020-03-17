@@ -8,7 +8,7 @@
     overflow: auto;
 }
 
-.tabelaAlunos{
+.tabelaAlunos, .editMode{
     width: 80%;
     height: auto;
     margin-top: 2em;
@@ -176,11 +176,15 @@
 
 /*EDITA------------------------------*/
 .editaAlunos{
-    display: none;
-    align-items: center;
-    flex-direction: row;
+    background-color: white;
+    margin-top: 2em;
     height: 2em;
-    width: 80%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .editaAlunos input,
@@ -189,14 +193,15 @@
     background-color: #ffffff;
     display: inline-block;
     vertical-align: middle;
-    margin: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 1em;
+    padding-left: .3em;
     font-size: 11pt;
     text-align: left;
-    height: 1.8em;
+    height: 2em;
 }
-.formularioAlunos{
-    padding-left: 1.5em;
-}
+
 .formularioAlunos, fieldset{
     margin: 0;
     margin-top: auto;
