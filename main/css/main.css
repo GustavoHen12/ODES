@@ -17,6 +17,9 @@ ul{
     height: 2.5em;
     width: 100%;
     overflow: auto;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .nav_bar{
