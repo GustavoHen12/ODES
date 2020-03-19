@@ -9,5 +9,8 @@ let relatorioData = struct.makeDataStruct("id tempo texto");
 //constroi objetos que manipulam os arquivos
 const dataC = require(path.concat("/libs/data"));
 let DataControler = dataC.DataControler;
-let alunos = new DataControler("listaAlunos");
-let relatorio = new DataControler("relatoriosAlunos");
+
+let alunos = new DataControler("listaAlunos", "dados");
+let temp = alunos.confUnique("alunos", "id");
+//console.log(temp);
+let relatorio = new DataControler("relatoriosAlunos", "relatorios");
