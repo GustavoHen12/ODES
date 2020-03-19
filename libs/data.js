@@ -75,6 +75,15 @@ class DataControler
         return  novo.chain().data({removeMeta:true});
     }
 
+    lastID()
+    {
+        var novo = this.tabela.getCollection(this.collection );
+        let data = novo.chain().data();
+        let tam = Object.keys(data).length;
+        if (tam == 0)
+            return 0;
+        return (data[tam-1].$loki);
+    }
     //a partir de um unico dado retorna todas as informacoes
     //deve ser passado em objeto em query: {'chave':'objeto'}
     //deve ser passado o criterio de ordem em sort: 'chave'
@@ -93,17 +102,17 @@ class DataControler
     //a partir de um objeto, atualiza os dados
     //e passado um dado de busca, ou seja, o que sera procurado
     //no objeto que sera substituido
-    updateData(newData, chave, busca)
+    updateData(newData, items, lokiID)
     {
         var coll = this.tabela.getCollection(this.collection );
         if (coll === null) return null;
         //pega o elemento que sera atualizado
-        let old = coll.by("id", "2");
-        console.log(old);
-        return 1;
-        //passa os novos dados
-//        for(let i = 0; i < (Object.keys(old).length); i++)
-//            old.nome = newData.name;
+        let old = coll.get(lokiID);
+        //passa os novos dados         
+        for(let i = 0; i < items.length; i++)
+            old[items[i]] = newData[items[i]];
+        //atualiza dados
+        coll.update(old);
     }
 
 }

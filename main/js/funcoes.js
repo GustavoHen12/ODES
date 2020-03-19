@@ -34,6 +34,6 @@ function sendNew()
 
 function getNewId()
 {
-    let dados = alunos.receiveData();
-    return ((Object.keys(dados).length)+1);
+    //para que o ID seja igual ao metadado $loki
+    return alunos.lastID()+1;
 }
