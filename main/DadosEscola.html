@@ -63,7 +63,7 @@
 
         function init(){  
             //PEGAR ESCOLA DA PAGINA ANTERIOR
-            let res = alunos.consultData({'escola': 'Outra Escola Aleatoria'}, 'nome');
+            let res = alunos.consultData({'escola': 'Escola Aleatoria +1'}, 'nome');
             console.log(res);
             let cont = document.getElementById("container");
             //adiciona os objetos dos alunos na pagina em ordem
@@ -73,7 +73,7 @@
 
         function initEditMode()
         {
-            let res = alunos.consultData({'escola': 'Outra Escola Aleatoria'}, 'nome');
+            let res = alunos.consultData({'escola': 'Escola Aleatoria +1'}, 'nome');
             console.log(res);
             let cont = document.getElementById("containerEdit");
             //adiciona os objetos dos alunos na pagina em ordem
@@ -164,7 +164,32 @@
         
         function atualizaDados()
         {
-            alunos.updateData({"nome":"Joao"}, ["nome"], 1);
+            let elementos = document.getElementsByClassName("editaAlunos");
+            let newUp = new alunoData();
+            while(elementos.length > 0){
+                //pega id do elemento
+                let id = parseInt(elementos[0].getAttribute("id"));
+                let inputs = elementos[0].firstChild.firstChild.childNodes; 
+                let tam = inputs.length;
+                let i = 0;
+                while( i < tam)
+                {
+                    if (inputs[i].value != inputs[i].defaultValue)
+                    {
+                        newUp["nome"] = inputs[0].value;
+                        newUp["turno"] = inputs[1].value;
+                        newUp["turma"] = inputs[2].value;
+                        newUp["prof"] = inputs[3].value;
+                        newUp["deficiencia"] = inputs[4].value;
+                        alunos.updateData(newUp, ["nome", "turno", "turma", "prof", "deficiencia"], id);
+                        break;
+                    }
+                    i++;
+                }
+                //remove elemento
+                elementos[0].parentNode.removeChild(elementos[0]);
+            }
+            viewMode();
         }
         //FECHA MODAL
         var span = document.getElementsByClassName("close")[0];

@@ -14,7 +14,7 @@ class construtorAlunos
                                 '<p style="width: 5%" id = "Aturmo">'+dado.turno+'</p>'+
                                 '<p  style="width: 5%" id = "Aano">'+dado.turma+'</p>'+
                                 '<p  style="width: 15%" id = "Aprofessora">'+dado.prof+'</p>'+
-                                '<p  style="width: 30%" id = "Adef">'+dado.defciencia+'</p>'+
+                                '<p  style="width: 30%" id = "Adef">'+dado.deficiencia+'</p>'+
                             '</div>'+
                             
                             '<div class = "acoesAluno">'+
@@ -50,23 +50,67 @@ class construtorAlunos
 
     builAlunosEdit(dado)
     {
-        var el = document.createElement('div');        
-        var domString = '<div id = "edit'+ dado.id +'" class = "editaAlunos">'+
-                        '<form class = "formularioAlunos" action = "#" method="POST">'+
-                            '<fieldset>'+
-                                '<input class = "inputAluno" type="text" id="nome" name="nome" style="width: 40%" value="'+dado.nome+'">'+
-                                '<select style="width: 5%" name="turno" id="turno" value="'+dado.turno+'">'+
-                                    '<option value="">--</option>'+
-                                    '<option value="T">T</option>'+
-                                    '<option value="M">M</option>'+
-                                '</select>'+
-                                '<input class = "inputAluno" type="text" id="turma" name="turma" style="width: 5%" value="'+dado.turma+'">'+
-                                '<input class = "inputAluno" type="text" id="prof" name="prof" style="width: 15%" value="'+dado.prof+'">'+
-                                '<input class = "inputAluno" type="text" id="deficiencia" name="deficiencia" style="width: 25%" value="'+dado.defciencia+'">'+
-                            '</fieldset>'+
-                        '</form>'+
-                    '</div>';
-        el.innerHTML =  domString;
+        var el = document.createElement('div');
+        if(dado.turno == "T")        
+        {
+            var domString = '<div id = "'+ dado.id +'edit" class = "editaAlunos">'+
+                            '<form class = "formularioAlunos" action = "#" method="POST">'+
+                                '<fieldset>'+
+                                    '<input class = "inputAluno" type="text" id="nome" name="nome" style="width: 40%" value="'+dado.nome+'">'+
+                                    '<select style="width: 5%" name="turno" id="turno">'+
+                                        '<option value="">--</option>'+
+                                        '<option value="T" selected>T</option>'+
+                                        '<option value="M">M</option>'+
+                                    '</select>'+
+                                    '<input class = "inputAluno" type="text" id="turma" name="turma" style="width: 5%" value="'+dado.turma+'">'+
+                                    '<input class = "inputAluno" type="text" id="prof" name="prof" style="width: 15%" value="'+dado.prof+'">'+
+                                    '<input class = "inputAluno" type="text" id="deficiencia" name="deficiencia" style="width: 25%" value="'+dado.deficiencia+'">'+
+                                '</fieldset>'+
+                            '</form>'+
+                        '</div>';
+        }
+        else
+        {
+            if(dado.turno == "M")
+            {
+                var domString = '<div id = "'+ dado.id +'edit" class = "editaAlunos">'+
+                                '<form class = "formularioAlunos" action = "#" method="POST">'+
+                                    '<fieldset>'+
+                                        '<input class = "inputAluno" type="text" id="nome" name="nome" style="width: 40%" value="'+dado.nome+'">'+
+                                        '<select style="width: 5%" name="turno" id="turno">'+
+                                            '<option value="">--</option>'+
+                                            '<option value="T">T</option>'+
+                                            '<option value="M" selected>M</option>'+
+                                        '</select>'+
+                                        '<input class = "inputAluno" type="text" id="turma" name="turma" style="width: 5%" value="'+dado.turma+'">'+
+                                        '<input class = "inputAluno" type="text" id="prof" name="prof" style="width: 15%" value="'+dado.prof+'">'+
+                                        '<input class = "inputAluno" type="text" id="deficiencia" name="deficiencia" style="width: 25%" value="'+dado.deficiencia+'">'+
+                                    '</fieldset>'+
+                                '</form>'+
+                            '</div>';
+            }
+            else
+            {
+                var domString = '<div id = "'+ dado.id +'edit" class = "editaAlunos">'+
+                                '<form class = "formularioAlunos" action = "#" method="POST">'+
+                                    '<fieldset>'+
+                                        '<input class = "inputAluno" type="text" id="nome" name="nome" style="width: 40%" value="'+dado.nome+'">'+
+                                        '<select style="width: 5%" name="turno" id="turno">'+
+                                            '<option value=""selected>--</option>'+
+                                            '<option value="T">T</option>'+
+                                            '<option value="M">M</option>'+
+                                        '</select>'+
+                                        '<input class = "inputAluno" type="text" id="turma" name="turma" style="width: 5%" value="'+dado.turma+'">'+
+                                        '<input class = "inputAluno" type="text" id="prof" name="prof" style="width: 15%" value="'+dado.prof+'">'+
+                                        '<input class = "inputAluno" type="text" id="deficiencia" name="deficiencia" style="width: 25%" value="'+dado.deficiencia+'">'+
+                                    '</fieldset>'+
+                                '</form>'+
+                            '</div>';
+            }
+
+        }
+
+            el.innerHTML =  domString;
         return el.firstChild;
         
     }

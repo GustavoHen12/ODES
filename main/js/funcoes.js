@@ -15,21 +15,19 @@ let alunos = new DataControler("listaAlunos");*/
 
 function sendNew()
 {
-    let elemento = document.getElementById("nome");
-    let nome = elemento.value;
-    elemento = document.getElementById("deficiencia");
-    let deficiencia = elemento.value;
-    elemento = document.getElementById("turno");
-    let turno = elemento.value;
-    elemento = document.getElementById("turma");
-    let turma = elemento.value;
-    elemento = document.getElementById("prof");
-    let prof = elemento.value;
-    let escola = document.getElementById("escola").innerHTML;   /*Alterar para algo mais seguro*/
-    let id = getNewId();
-    let newAluno = new alunoData(id, nome, turno, turma, prof, deficiencia, escola);
+    let newAluno = new alunoData();
+    newAluno.nome = document.getElementById("nome").value;
+    newAluno.deficiencia = document.getElementById("deficiencia").value;
+    newAluno.turno = document.getElementById("turno").value;
+    newAluno.turma = document.getElementById("turma").value;
+    newAluno.prof = document.getElementById("prof").value;
+    newAluno.escola = document.getElementById("escola").innerHTML;   /*Alterar para algo mais seguro*/
+    newAluno.id = getNewId();
+    
     console.log(newAluno);
     alunos.sendData(newAluno);
+
+    location.reload();
 }
 
 function getNewId()

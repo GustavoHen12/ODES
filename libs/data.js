@@ -33,6 +33,7 @@ class DataControler
     {
 
     }
+    //NAO FUNCIONA E EU NAO SEI PORQUE
     confUnique(coll, unico)
     {
         var entries = this.tabela.getCollection(coll);
@@ -89,7 +90,6 @@ class DataControler
     //deve ser passado o criterio de ordem em sort: 'chave'
     consultData(query, sort)
     {
-        console.log(this.collection);
         var coll = this.tabela.getCollection(this.collection);
         if (coll === null) return null;
         let res =  coll.chain()

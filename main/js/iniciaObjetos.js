@@ -3,7 +3,7 @@ let path = app.getAppPath();
 
 const struct = require(path.concat("/libs/dataType"));
 //constroi objeto para dados basicos dos alunos
-let alunoData = struct.makeDataStruct("id nome turno turma prof defciencia escola");
+let alunoData = struct.makeDataStruct("id nome turno turma prof deficiencia escola");
 let relatorioData = struct.makeDataStruct("id tempo texto");
 
 //constroi objetos que manipulam os arquivos
