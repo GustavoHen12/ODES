@@ -29,7 +29,7 @@
                 </div>
                 <div class = "modalContent">
                     <label for= "novaEscola">Nome da Escola:</label>
-                    <input class = "inputGenerico" type="text" id="novaEscola" name="novaEscola" style="width: 80%" value="">
+                    <input class = "inputGenerico" type="text" id="novaEscola" name="novaEscola" style="width: 75%" value="">
                 </div>
             </div>
         </div>
@@ -48,14 +48,43 @@
             </div>
 
             <!--Area Central-->
+            <div class = "areaCentral">
+                <div id = "carregando" class = "carregando"><h1>Carregando...</h1></div>
+
+                <div id = "containerEscolas" class = "escolas">
+                </div>
+            </div>
         </div>
     </body>
 
     <script src="js/iniciaObjetos.js"></script>
     <script>
+        const contr = require(path.concat("/libs/objects"));
+        let construtorObj = contr.construtorObj;
+        let construtor = new construtorObj();//constroi objetos HTML
+        
+        setTimeout(() => { init(); }, 1000);//  (?)     FAZER LOOP TENTANDO + PAG CARREGANDO 
 
-        function novaEscola(){
+        function init(){  
+            //PEGAR ESCOLA DA PAGINA ANTERIOR
+            let res = escolas.receiveData();
+            console.log(res);
             
+            document.getElementById("carregando").style.display = "none";
+            let cont = document.getElementById("containerEscolas");
+            //adiciona os objetos dos alunos na pagina em ordem
+            for(let i = 0; i < Object.keys(res).length; i++)
+                cont.appendChild(construtor.buildEscolas(res[i]));
+        }
+    </script>
+    <script>
+        function novaEscola(){
+            let escola = new escolasData();
+            escola.nome = document.getElementById("novaEscola").value;
+            
+            escolas.sendData(escola);
+
+            location.reload();//alterar para INIT
         }
         function novaLista(){
             var modal = document.getElementById("modal");

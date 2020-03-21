@@ -76,7 +76,7 @@
     padding: 0%;
 }
 .novaEscola{
-    width: 60%;
+    width: 55%;
     height: 15%;
     margin-top: 7em;
     margin-left: auto;
@@ -92,4 +92,48 @@ label{
     color: white;
     font-weight: 600;
     margin-left: 1em;
+}
+
+/*AREA CENTRAL-----------------------*/
+.areaCentral{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0%;
+}
+
+.escolas{
+    height: 100%;
+    width: 70%;
+    margin-top: 2.5em;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.escolasContent{
+    background-color:#F0EFF4;
+    height: 1.5em;
+    width: 95%;
+    padding: .5em;
+    margin-top: 2em;
+    transition: background-color .8s, width .8s;
+}
+
+.escolasContent:hover{
+    background-color: white;
+    width: 100%;
+}
+.nomeEscola{
+    color: black;
+    font-family: 'Montserrat','Segoe UI', Tahoma, Verdana, sans-serif;
+    font-size: 15pt;
+    font-weight: 500;
+    text-align: left;
+    margin: 0;
+    margin-left: 1.5em;
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
 }
