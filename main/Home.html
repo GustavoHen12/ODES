@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Odes</title>
+        <link rel = "stylesheet" type="text/css" href="./css/main.css">
+        <link rel = "stylesheet" type="text/css" href="./css/homePage.css">
+    </head>
+    <body>
+        <!--Barra de ferramentas-->
+        <div class = "header">
+            <nav class = "nav_bar">
+                <ul class = "barGroup">
+                    <li class = "navBarItem"><img class="iconeNav" src  = "img/arrowBack.png"></li>
+                    <li class = "navBarItem">Configurações</li>
+                    <li class = "navBarItem">Sobre</li>
+                    <li class = "navBarItem">Ajuda</li>
+                </ul>
+            </nav>
+        </div>
+
+        <div id = "modal" class = "modalContainer">
+            <div id = "modalSchool" class = "novaEscola">
+                <div class = "modalHeader">
+                    <div class = "opButtons">
+                        <button onclick="novaEscola()">Salvar</button>
+                        <button onclick="fechaModal()">Cancelar</button>
+                    </div>
+                </div>
+                <div class = "modalContent">
+                    <label for= "novaEscola">Nome da Escola:</label>
+                    <input class = "inputGenerico" type="text" id="novaEscola" name="novaEscola" style="width: 80%" value="">
+                </div>
+            </div>
+        </div>
+        
+        <div class = "container">
+            <!--Barra lateral-->
+            <div class = "areaLateral">
+                <div class = "areaCima">
+                    <button type='button' class = "btn med" onClick="novaLista()">Nova Lista</button>
+                    <button type='button' class = "btn med" onClick="">Exportar</button>
+                    <button type='button' class = "btn med" onClick="">Recarregar</button>
+                </div>
+                <div class = "areaBaixo">
+                    <button type='button' class = "btn big" onClick="">Configurações</button>
+                </div>
+            </div>
+
+            <!--Area Central-->
+        </div>
+    </body>
+
+    <script src="js/iniciaObjetos.js"></script>
+    <script>
+
+        function novaEscola(){
+            
+        }
+        function novaLista(){
+            var modal = document.getElementById("modal");
+            modal.style.display = "block";
+        }
+
+        //MODAL        
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                fechaModal()
+            }
+        }
+        function fechaModal() {
+            modal.style.display = "none";
+        }
+    </script>
+</html>

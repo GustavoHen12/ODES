@@ -5,12 +5,14 @@ const struct = require(path.concat("/libs/dataType"));
 //constroi objeto para dados basicos dos alunos
 let alunoData = struct.makeDataStruct("id nome turno turma prof deficiencia escola");
 let relatorioData = struct.makeDataStruct("id tempo texto");
+let escolasData = struct.makeDataStruct("nomeEscola");
 
 //constroi objetos que manipulam os arquivos
 const dataC = require(path.concat("/libs/data"));
 let DataControler = dataC.DataControler;
 
-let alunos = new DataControler("listaAlunos", "dados");
-let temp = alunos.confUnique("alunos", "id");
+let escolas = new DataControler("listaEscolas", "escolas");
+
+let alunos = new DataControler("listaAlunos", "alunos");
 
 let relatorio = new DataControler("relatoriosAlunos", "relatorios");
