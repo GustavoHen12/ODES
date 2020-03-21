@@ -1,4 +1,4 @@
-class construtorAlunos
+class construtorObj
 {
     constructor()
     {
@@ -43,6 +43,16 @@ class construtorAlunos
         var domString = '<div class = "itemRelat">'+
                             '<h4>'+relatorio.tempo+'</h4>'+
                             '<p>'+relatorio.texto+'</p>'+
+                        '</div>';
+        el.innerHTML =  domString;
+        return el.firstChild;
+    }
+
+    buildEscolas(escola)
+    {
+        var el = document.createElement('div');        
+        var domString = '<div class = "escolasContent">'+
+                        '    <p class = "nomeEscola" onclick="goTo('+escola.nome+')">'+escola.nome+'</p>'+
                         '</div>';
         el.innerHTML =  domString;
         return el.firstChild;
@@ -116,4 +126,4 @@ class construtorAlunos
     }
 }
 
-module.exports = {construtorAlunos : construtorAlunos};
+module.exports = {construtorObj : construtorObj};
