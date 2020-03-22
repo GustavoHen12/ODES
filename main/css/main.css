@@ -157,3 +157,9 @@ ul{
     font-weight: 500;
     font-family: 'Montserrat','Segoe UI', Tahoma, Verdana, sans-serif;    
 }
+
+fieldset{
+    border: none;
+    padding: 0%;
+    margin: 0;
+}

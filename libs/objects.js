@@ -52,7 +52,7 @@ class construtorObj
     {
         var el = document.createElement('div');        
         var domString = '<div class = "escolasContent">'+
-                        '    <p class = "nomeEscola" onclick="goTo('+escola.nome+')">'+escola.nome+'</p>'+
+                        '    <p class = "nomeEscola" onclick="goTo(\''+escola.nome+ '\')">'+escola.nome+'</p>'+
                         '</div>';
         el.innerHTML =  domString;
         return el.firstChild;

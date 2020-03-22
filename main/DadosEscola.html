@@ -22,7 +22,7 @@
 
         <!--Barra com superior-->
         <div class = "container barraSuperior">
-            <h1 class = "nomeTabela"></h1>
+            <h1 id = "nomeEscola" class = "nomeTabela"></h1>
         </div>
         <!--MODAL -> Relatorio-->
         <div id = modal class = "modalContainer">
@@ -35,6 +35,8 @@
 
         <!--Alunos-->
         <div class = "mainContainer">
+            <div id = "carregando" class = "carregando"><h1>Carregando...</h1></div>
+
             <div id = "containerEdit" class = "editMode" style="display: none;">
                 <div class = "buttonArea">
                     <button type='button' class = "botao" style="margin-right: 2em;" onClick="atualizaDados()">Salvar</button>
@@ -42,7 +44,7 @@
                 </div>
             </div>
 
-            <div id = "container" class = "tabelaAlunos">
+            <div id = "container" class = "tabelaAlunos" style="display: none;">
                 <div class = "buttonArea">
                     <button type='button' class = "botao" style="margin-right: 2em;" onClick="editMode()">Editar</button>
                     <button type='button' class = "botao" style="margin-right: 2em;" onClick="Reload()">Recarregar</button>
@@ -58,13 +60,21 @@
         let construtorObj = contr.construtorObj;
         let construtor = new construtorObj();//constroi objetos HTML
         
-        //tempo para iniciar a aplicacao
+        //TEMPO PARA INICIAR A APLICACAO
         setTimeout(() => { init(); }, 1000);//  (?)     FAZER LOOP TENTANDO + PAG CARREGANDO 
 
         function init(){  
-            //PEGAR ESCOLA DA PAGINA ANTERIOR
-            let res = alunos.consultData({'escola': 'Escola Aleatoria +1'}, 'nome');
+            //PEGA ESCOLA SELECIONADA
+            var escola = sessionStorage.getItem('escola');
+            //coloca nome da escola
+            document.getElementById("nomeEscola").innerHTML = escola;
+            let res = alunos.consultData({'escola': escola}, 'nome');
             console.log(res);
+            //apaga pag de carregamento
+            document.getElementById("carregando").style.display = "none";
+            //coloca pag de visualizacao
+            document.getElementById("container").style.display = "block";
+
             let cont = document.getElementById("container");
             //adiciona os objetos dos alunos na pagina em ordem
             for(let i = 0; i < Object.keys(res).length; i++)
@@ -73,7 +83,11 @@
 
         function initEditMode()
         {
-            let res = alunos.consultData({'escola': 'Escola Aleatoria +1'}, 'nome');
+            var escola = sessionStorage.getItem('escola');
+            //coloca nome da escola
+            document.getElementById("nomeEscola").innerHTML = escola;
+
+            let res = alunos.consultData({'escola': escola}, 'nome');
             console.log(res);
             let cont = document.getElementById("containerEdit");
             //adiciona os objetos dos alunos na pagina em ordem

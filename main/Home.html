@@ -78,6 +78,11 @@
         }
     </script>
     <script>
+        function goTo(escola)
+        {
+            sessionStorage.setItem('escola', escola);
+            window.location.href = "DadosEscola.html";
+        }
         function novaEscola(){
             let escola = new escolasData();
             escola.nome = document.getElementById("novaEscola").value;
@@ -86,6 +91,7 @@
 
             location.reload();//alterar para INIT
         }
+
         function novaLista(){
             var modal = document.getElementById("modal");
             modal.style.display = "block";
