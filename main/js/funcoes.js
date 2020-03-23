@@ -13,7 +13,7 @@ let alunoData = struct.makeDataStruct("id nome turno turma prof defciencia escol
 
 let alunos = new DataControler("listaAlunos");*/
 
-function sendNew()
+async function sendNew()
 {
     let newAluno = new alunoData();
     newAluno.nome = document.getElementById("nome").value;
@@ -21,13 +21,27 @@ function sendNew()
     newAluno.turno = document.getElementById("turno").value;
     newAluno.turma = document.getElementById("turma").value;
     newAluno.prof = document.getElementById("prof").value;
-    newAluno.escola = document.getElementById("escola").innerHTML;   /*Alterar para algo mais seguro*/
-    newAluno.id = getNewId();
+    let id = sessionStorage.getItem("editaAluno");
+    //se for para editar o aluno
+    if(id != "null")
+    {
+        newAluno.escola = document.getElementById("escolaOptions").value;        
+        await alunos.updateData(newAluno, ["escola","nome", "turno", "turma", "prof", "deficiencia"], parseInt(id));
+        //console.log(newAluno);
+        window.location.href = "DadosEscola.html";
+    }
+    //se for um novo aluno
+    else{
+        newAluno.escola = sessionStorage.getItem("escola");
+        newAluno.id = getNewId();    
+        alunos.sendData(newAluno);
+        location.reload();
+    }
     
     console.log(newAluno);
-    alunos.sendData(newAluno);
 
-    location.reload();
+
+
 }
 
 function getNewId()

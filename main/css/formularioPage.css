@@ -70,3 +70,8 @@ label, input, select, textarea, button {
 .alignBotao{
     margin-top: 4em;
 }
+
+.ShowEdit{
+    display: none;
+}
+
