@@ -62,12 +62,11 @@
         const contr = require(path.concat("/libs/objects"));
         let construtorObj = contr.construtorObj;
         let construtor = new construtorObj();//constroi objetos HTML
+        init();
         
-        setTimeout(() => { init(); }, 1000);//  (?)     FAZER LOOP TENTANDO + PAG CARREGANDO 
-
-        function init(){  
+        async function init(){  
             //PEGAR ESCOLA DA PAGINA ANTERIOR
-            let res = escolas.receiveData();
+            let res = await escolas.getData();
             console.log(res);
             
             document.getElementById("carregando").style.display = "none";

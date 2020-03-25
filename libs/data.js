@@ -76,6 +76,7 @@ class DataControler
         return  novo.chain().data({removeMeta:true});
     }
 
+    
     lastID()
     {
         var novo = this.tabela.getCollection(this.collection );
@@ -113,6 +114,42 @@ class DataControler
             old[items[i]] = newData[items[i]];
         //atualiza dados
         coll.update(old);
+    }
+
+    //igual ao receive, mas utilza promisses
+    getData()
+    {
+        return new Promise((resolve, reject) => {
+            setTimeout(()=>{
+                var novo = this.tabela.getCollection(this.collection);
+                if (novo != null) 
+                    resolve(novo.chain().data({removeMeta:true}));
+                else
+                    reject(null);}, 1000);
+        });
+    }
+
+    //consultData com promisse
+    searchData(query, sort)
+    {
+        return new Promise((resolve, reject) => {
+            setTimeout(()=>{
+                var ret = this.consultData(query, sort);
+                if (ret != null) 
+                    resolve(ret);
+                else
+                    reject(null);}, 1000);
+        });
+    }
+    //igual ao updateData, mas compromisse
+    setData(newData, items, lokiID)
+    {
+        return new Promise((resolve, reject) => {
+            setTimeout(()=>{
+                this.updateData(newData, items, lokiID); 
+                resolve(true);}, 1000);
+        });
+
     }
 
 }

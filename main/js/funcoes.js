@@ -21,13 +21,13 @@ async function sendNew()
     newAluno.turno = document.getElementById("turno").value;
     newAluno.turma = document.getElementById("turma").value;
     newAluno.prof = document.getElementById("prof").value;
-    let id = sessionStorage.getItem("editaAluno");
     //se for para editar o aluno
+    let id = sessionStorage.getItem("editaAluno");
     if(id != "null")
     {
         newAluno.escola = document.getElementById("escolaOptions").value;        
-        await alunos.updateData(newAluno, ["escola","nome", "turno", "turma", "prof", "deficiencia"], parseInt(id));
-        //console.log(newAluno);
+        await alunos.setData(newAluno, ["escola","nome", "turno", "turma", "prof", "deficiencia"], parseInt(id));
+        console.log(newAluno);
         window.location.href = "DadosEscola.html";
     }
     //se for um novo aluno

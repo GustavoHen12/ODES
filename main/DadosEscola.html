@@ -62,16 +62,16 @@
         const contr = require(path.concat("/libs/objects"));
         let construtorObj = contr.construtorObj;
         let construtor = new construtorObj();//constroi objetos HTML
-        
+        init();
         //TEMPO PARA INICIAR A APLICACAO
-        setTimeout(() => { init(); }, 1000);//  (?)     FAZER LOOP TENTANDO + PAG CARREGANDO 
+        //setTimeout(() => {  }, 1000);//  (?)     FAZER LOOP TENTANDO + PAG CARREGANDO 
 
-        function init(){  
+        async function init(){  
             //PEGA ESCOLA SELECIONADA
             var escola = sessionStorage.getItem('escola');
             //coloca nome da escola
             document.getElementById("nomeEscola").innerHTML = escola;
-            let res = alunos.consultData({'escola': escola}, 'nome');
+            let res = await alunos.searchData({'escola': escola}, 'nome');
             console.log(res);
             //apaga pag de carregamento
             document.getElementById("carregando").style.display = "none";
@@ -84,13 +84,13 @@
                 cont.appendChild(construtor.builAlunos(res[i]));
         }
 
-        function initEditMode()
+        async function initEditMode()
         {
             var escola = sessionStorage.getItem('escola');
             //coloca nome da escola
             document.getElementById("nomeEscola").innerHTML = escola;
 
-            let res = alunos.consultData({'escola': escola}, 'nome');
+            let res = await alunos.searchData({'escola': escola}, 'nome');
             console.log(res);
             let cont = document.getElementById("containerEdit");
             //adiciona os objetos dos alunos na pagina em ordem
