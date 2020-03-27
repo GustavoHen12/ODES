@@ -72,6 +72,7 @@
             //coloca nome da escola
             document.getElementById("nomeEscola").innerHTML = escola;
             let res = await alunos.searchData({'escola': escola}, 'nome');
+            alunos.receiveData();
             console.log(res);
             //apaga pag de carregamento
             document.getElementById("carregando").style.display = "none";
@@ -91,6 +92,7 @@
             document.getElementById("nomeEscola").innerHTML = escola;
 
             let res = await alunos.searchData({'escola': escola}, 'nome');
+
             console.log(res);
             let cont = document.getElementById("containerEdit");
             //adiciona os objetos dos alunos na pagina em ordem

@@ -62,9 +62,17 @@ class DataControler
     
 
     //recebe um id e apaga o dado
-    deleteData()
+    deleteData(lokiID)
     {
-
+        var coll = this.tabela.getCollection(this.collection );
+        if (coll === null) return null;
+        //pega o elemento que sera removido
+        let old = coll.get(lokiID);
+        if (old == null) return false
+        console.log(lokiID);
+        //passa os novos dados         
+        coll.remove(old);
+        return true;
     }
 
     //retorna todos os dados do objeto no formato Javascript
@@ -73,7 +81,8 @@ class DataControler
         
         var novo = this.tabela.getCollection(this.collection );
         if (novo === null) return null;
-        return  novo.chain().data({removeMeta:true});
+        //return  novo.chain().data({removeMeta:true});
+        console.log(novo.chain().data());
     }
 
     

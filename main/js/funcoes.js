@@ -8,27 +8,43 @@ const salvaMensage = {
     message: 'Informações salvas',
 };
 
-async function showMensage()
+const deletaMensage = {
+    type: 'info',
+    buttons: ['Voltar'],
+    defaultId: 1,
+    title: 'Message',
+    message: 'Informações excluidas',
+};
+
+async function showMensage(tipo)
 {
-    let op = await dialog.showMessageBox(null, salvaMensage, (response) => {
-        console.log('>'+response);
-    });
-    if (op == 0){
-        return;
+    if(tipo == "salva")
+    {
+        let op = await dialog.showMessageBox(null, salvaMensage);
+        if (op.response == 0)
+            location.reload;
+        else
+            returnPage();
     }
-    else{
+    else
+    {
+        let op = await dialog.showMessageBox(null, deletaMensage);
         returnPage();
     }
 }
-
-function returnPage()
+function getNewId()
 {
+    //para que o ID seja igual ao metadado $loki
+    return alunos.lastID();
+}
+/////////////////////////////////////////////////////////
+
+function returnPage(){
     window.location.href = "DadosEscola.html";
 }
 
-function sendNew()
-{
 
+function sendNew(){
 
     let newAluno = new alunoData();
     newAluno.nome = document.getElementById("nome").value;
@@ -43,19 +59,29 @@ function sendNew()
         newAluno.escola = document.getElementById("escolaOptions").value;        
         alunos.updateData(newAluno, ["escola","nome", "turno", "turma", "prof", "deficiencia"], parseInt(id));
         //mostra mensagem de salvo
-        showMensage();
+        showMensage("salva");
     }
     //se for um novo aluno
     else{
         newAluno.escola = sessionStorage.getItem("escola");
-        newAluno.id = getNewId();    
+        newAluno.id = 0;     
+        //primeiro salva para pegar o id
         alunos.sendData(newAluno);
-        location.reload();
+        //atualiza dado
+        let id = getNewId();
+        console.log(id);
+        alunos.updateData({"id":id},["id"], id);
+        showMensage("salva");
     }
 }
 
-function getNewId()
-{
-    //para que o ID seja igual ao metadado $loki
-    return alunos.lastID()+1;
+function deletaAluno(){
+    let id = sessionStorage.getItem("editaAluno");
+        
+    if(!alunos.deleteData(parseInt(id)))
+    {
+
+    }
+
+    showMensage("deleta");
 }
