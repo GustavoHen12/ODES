@@ -113,6 +113,7 @@ class DataControler
         for(let i = 0; i < items.length; i++)
             old[items[i]] = newData[items[i]];
         //atualiza dados
+        console.log('->' + old);
         coll.update(old);
     }
 
@@ -140,16 +141,6 @@ class DataControler
                 else
                     reject(null);}, 1000);
         });
-    }
-    //igual ao updateData, mas compromisse
-    setData(newData, items, lokiID)
-    {
-        return new Promise((resolve, reject) => {
-            setTimeout(()=>{
-                this.updateData(newData, items, lokiID); 
-                resolve(true);}, 1000);
-        });
-
     }
 
 }
