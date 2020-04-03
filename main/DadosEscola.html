@@ -12,7 +12,7 @@
         <div class = "header">
             <nav class = "nav_bar">
                 <ul class = "barGroup">
-                    <li class = "navBarItem"><img class="iconeNav" src  = "img/arrowBack.png"></li>
+                    <li class = "navBarItem"><a href="Home.html"><img class="iconeNav" src  = "img/arrowBack.png"></a></li>
                     <li class = "navBarItem">Configurações</li>
                     <li class = "navBarItem">Sobre</li>
                     <li class = "navBarItem">Ajuda</li>
@@ -63,8 +63,6 @@
         let construtorObj = contr.construtorObj;
         let construtor = new construtorObj();//constroi objetos HTML
         init();
-        //TEMPO PARA INICIAR A APLICACAO
-        //setTimeout(() => {  }, 1000);//  (?)     FAZER LOOP TENTANDO + PAG CARREGANDO 
 
         async function init(){  
             //PEGA ESCOLA SELECIONADA
@@ -73,7 +71,6 @@
             document.getElementById("nomeEscola").innerHTML = escola;
             let res = await alunos.searchData({'escola': escola}, 'nome');
             alunos.receiveData();
-            console.log(res);
             //apaga pag de carregamento
             document.getElementById("carregando").style.display = "none";
             //coloca pag de visualizacao
@@ -93,7 +90,6 @@
 
             let res = await alunos.searchData({'escola': escola}, 'nome');
 
-            console.log(res);
             let cont = document.getElementById("containerEdit");
             //adiciona os objetos dos alunos na pagina em ordem
             for(let i = 0; i < Object.keys(res).length; i++)

@@ -77,11 +77,11 @@
         }
     </script>
     <script>
-        function goTo(escola)
-        {
+        function goTo(escola){
             sessionStorage.setItem('escola', escola);
             window.location.href = "DadosEscola.html";
         }
+        
         function novaEscola(){
             let escola = new escolasData();
             escola.nome = document.getElementById("novaEscola").value;

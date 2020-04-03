@@ -18,16 +18,14 @@ const deletaMensage = {
 
 async function showMensage(tipo)
 {
-    if(tipo == "salva")
-    {
+    if(tipo == "salva"){
         let op = await dialog.showMessageBox(null, salvaMensage);
         if (op.response == 0)
             location.reload;
         else
             returnPage();
     }
-    else
-    {
+    else{
         let op = await dialog.showMessageBox(null, deletaMensage);
         returnPage();
     }
@@ -77,10 +75,10 @@ function sendNew(){
 
 function deletaAluno(){
     let id = sessionStorage.getItem("editaAluno");
-        
-    if(!alunos.deleteData(parseInt(id)))
-    {
+    //IMPLEMENTA DELETA RELATORIOS
 
+    if(!alunos.deleteData(parseInt(id))){
+        console.log("ERRO");
     }
 
     showMensage("deleta");
