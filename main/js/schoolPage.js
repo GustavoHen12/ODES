@@ -1,14 +1,69 @@
-function editButton(id)
-{
+const { dialog } = require('electron').remote;
+const removeMessage = {
+    type: 'question',
+    buttons: ['Remover', 'Cancelar'],
+    defaultId: 1,
+    title: 'Message',
+    message: 'Você deseja prosseguir ?',
+    detail: 'escola e todos seus dados removidos',
+};
+
+const exitoMessage = {
+    type: 'info',
+    buttons: ['Voltar para Home'],
+    defaultId: 1,
+    title: 'Message',
+    message: 'Escola e todos seus dados removidos',
+};
+
+const erroMessage = {
+    type: 'info',
+    buttons: ['Voltar para Home'],
+    defaultId: 1,
+    title: 'Message',
+    message: 'Ocorreu um erro',
+};
+
+
+async function removeEscola(){
+    //pergunta antes de prosseguir
+    let op = await dialog.showMessageBox(null, removeMessage);
+    if (op.response == 1)
+            return;
+    
+    let school = sessionStorage.getItem('escola');
+
+    //remove todos os alunos da pag
+    let res = await alunos.searchData({'escola': school}, 'nome');
+    for(let i = 0; i < Object.keys(res).length; i++)
+                alunos.deleteData(parseInt(res[i].id));
+    //remove a escola
+    //da pra melhorar
+    let tdEscola = escolas.receiveData();
+    let i = 0;
+    while((i < Object.keys(tdEscola).length) && (tdEscola[i].nome != school))
+        i++;
+    if (i < Object.keys(tdEscola).length)
+        escolas.deleteData(tdEscola[i].$loki);
+    else
+        await dialog.showMessageBox(null, erroMessage);
+     
+    await dialog.showMessageBox(null, exitoMessage);
+    retornaPag();
+}
+
+function retornaPag(){
+    window.location.href = "Home.html";
+}
+
+function editButton(id){
     //passa o id do aluno q sera editado
     //ou null se for para adicionar um novo aluno
     sessionStorage.setItem("editaAluno", id);
     window.location.href = "NovoAluno.html";
-
 }
 
-function plusButton(id)
-{
+function plusButton(id){
     var ele = ('plus').concat(id);
     var x = document.getElementById(ele);
     if (x.style.display === "none") {
@@ -18,8 +73,7 @@ function plusButton(id)
     }
 }
 
-function sendRelatory(id)
-{
+function sendRelatory(id){
     //pega o id do aluno
     let newRel = new relatorioData;
     newRel.id = id;
@@ -38,8 +92,7 @@ function sendRelatory(id)
     plusButton(id);//fecha janela
 }
 
-function relatoryButton(id)
-{
+function relatoryButton(id){
     //pega dados
     let dados = relatorio.consultData({"id":id}, "tempo");
     let tela = document.getElementById("modalRelatory");
@@ -55,8 +108,7 @@ function relatoryButton(id)
     modal.style.display = "block";
 }
 
-function editMode()
-{
+function editMode(){
     //pega os elementos
     var view = document.getElementById("container");
     var edit = document.getElementById("containerEdit");
@@ -73,8 +125,7 @@ function editMode()
     initEditMode();
 }
 
-function viewMode()
-{
+function viewMode(){
     var view = document.getElementById("container");
     var edit = document.getElementById("containerEdit");
     view.style.display = "block";
@@ -86,8 +137,7 @@ function viewMode()
     init();
 }
 
-function atualizaDados()
-{
+function atualizaDados(){
     let elementos = document.getElementsByClassName("editaAlunos");
     let newUp = new alunoData();
     while(elementos.length > 0){
@@ -116,8 +166,7 @@ function atualizaDados()
     viewMode();
 }
 
-function Reload()
-{
+function Reload(){
     location.reload();
 }
 

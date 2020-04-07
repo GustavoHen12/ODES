@@ -83,6 +83,7 @@ class DataControler
         if (novo === null) return null;
         //return  novo.chain().data({removeMeta:true});
         console.log(novo.chain().data());
+        return  novo.chain().data();
     }
 
     
