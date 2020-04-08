@@ -1,3 +1,15 @@
+const fileC = require(path.concat("/libs/csv"));
+let File = fileC.File;
+let CSV = new File;
+
+function gerarLista(){
+    var escola = sessionStorage.getItem('escola');
+    let alu = alunos.consultData({'escola': escola}, 'nome');
+            
+    console.log(CSV.toCsv(alu, ["nome", "turno", "turma", "prof", "deficiencia", "escola"]));
+}
+
+
 const { dialog } = require('electron').remote;
 const removeMessage = {
     type: 'question',
@@ -55,6 +67,7 @@ async function removeEscola(){
 function retornaPag(){
     window.location.href = "Home.html";
 }
+
 
 function editButton(id){
     //passa o id do aluno q sera editado

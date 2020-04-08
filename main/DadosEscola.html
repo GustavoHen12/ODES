@@ -25,6 +25,7 @@
         <div class = "container barraSuperior">
             <h1 id = "nomeEscola" class = "nomeTabela"></h1>
             <div class = "btnArea">
+                <button class = "botao" onclick="gerarLista()">Gerar Lista</button>
                 <button class = "botao" onclick="editButton(null)">Novo Aluno</button>
             </div>
         </div>
@@ -71,7 +72,7 @@
             //coloca nome da escola
             document.getElementById("nomeEscola").innerHTML = escola;
             let res = await alunos.searchData({'escola': escola}, 'nome');
-            alunos.receiveData();
+            
             //apaga pag de carregamento
             document.getElementById("carregando").style.display = "none";
             //coloca pag de visualizacao
