@@ -1,16 +1,50 @@
+//mensagem e caixa de dialodo
+const { dialog } = require('electron').remote;
+
+//biblioteca csv
 const fileC = require(path.concat("/libs/csv"));
 let File = fileC.File;
 let CSV = new File;
 
+//para salvar arquivo
+let fs = require('fs');
+
+async function saveCSV(content)
+{
+    WIN = require('electron').remote.getCurrentWindow();
+
+    let options = {
+        title: "Salvar tabela",
+        defaultPath : path,
+        buttonLabel : "Salvar",
+        filters :[{name: 'CSV', extensions: ['csv']}]
+    }
+    //console.log(await dialog.showSaveDialog(WIN, options));
+    let filename = await dialog.showSaveDialog(WIN, options)
+    console.log(filename.filePath);
+    try{
+        fs.writeFileSync(filename.filePath, content, 'utf-8');
+    }
+    catch(e){
+        dialog.showErrorBox("Erro", "não foi possível salvar o arquivo")
+    }
+    
+}
+
 function gerarLista(){
+    //Pega dados dos alunos
     var escola = sessionStorage.getItem('escola');
     let alu = alunos.consultData({'escola': escola}, 'nome');
-            
-    console.log(CSV.toCsv(alu, ["nome", "turno", "turma", "prof", "deficiencia", "escola"]));
+    //cria lista csv
+    let lista = CSV.toCsv(alu, ["nome", "turno", "turma", "prof", "deficiencia", "escola"]);
+
+    //salva arquivo
+    saveCSV(lista);
+
 }
 
 
-const { dialog } = require('electron').remote;
+
 const removeMessage = {
     type: 'question',
     buttons: ['Remover', 'Cancelar'],
