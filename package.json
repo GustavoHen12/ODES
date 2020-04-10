@@ -1,12 +1,14 @@
 {
-  "name": "your-app",
+  "name": "odes",
   "version": "0.1.0",
   "main": "main.js",
   "type": "module",
   "module": "commonjs",
   "scripts": {
-    "start": "electron .",
-    "dist:windows": "electron-builder --windows"
+    "pack": "build --dir",
+    "dist": "build",
+    "pack-win": "build --dir --win",
+    "dist-win": "build --win"
   },
   "build": {
     "appId": "com.teste.app",
@@ -18,10 +20,12 @@
   },
   "devDependencies": {
     "electron": "^8.0.3",
-    "electron-builder": "^22.3.2"
+    "electron-builder": "^22.3.2",
+    "electron-packager": "^14.2.1",
+    "webpack": "^4.42.1",
+    "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "lokijs": "^1.5.8",
-    "webpack": "^4.41.6"
+    "lokijs": "^1.5.8"
   }
 }

@@ -40,7 +40,6 @@ function gerarLista(){
 
     //salva arquivo
     saveCSV(lista);
-
 }
 
 

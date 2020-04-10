@@ -7,11 +7,12 @@ function createWindow () {
     height: 600,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    icon: __dirname + "/icon/icon.png",
   })
 
-  win.loadFile('./index.html')
-  win.webContents.openDevTools()
+  win.loadFile('./main/Home.html')
+  //win.webContents.openDevTools()
   win.removeMenu();//remove o menu superior
   win.maximize();//fullscream
   //once{criaListas()}
