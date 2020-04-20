@@ -12,7 +12,7 @@ function createWindow () {
   })
 
   win.loadFile('./main/Home.html')
-  //win.webContents.openDevTools()
+  win.webContents.openDevTools()
   win.removeMenu();//remove o menu superior
   win.maximize();//fullscream
   //once{criaListas()}

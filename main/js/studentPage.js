@@ -1,20 +1,5 @@
 //mensagem de salvo
 const { dialog } = require('electron').remote;
-const salvaMensage = {
-    type: 'info',
-    buttons: ['Continuar editando', 'Voltar'],
-    defaultId: 1,
-    title: 'Message',
-    message: 'Informações salvas',
-};
-
-const deletaMensage = {
-    type: 'info',
-    buttons: ['Voltar'],
-    defaultId: 1,
-    title: 'Message',
-    message: 'Informações excluidas',
-};
 
 async function showMensage(tipo)
 {
@@ -23,13 +8,14 @@ async function showMensage(tipo)
         if (op.response == 0)
             location.reload;
         else
-            returnPage();
+            retornaPagina('Student');
     }
     else{
         let op = await dialog.showMessageBox(null, deletaMensage);
-        returnPage();
+        retornaPagina('Student');
     }
 }
+
 function getNewId()
 {
     //para que o ID seja igual ao metadado $loki
@@ -37,9 +23,6 @@ function getNewId()
 }
 /////////////////////////////////////////////////////////
 
-function returnPage(){
-    window.location.href = "DadosEscola.html";
-}
 
 
 function sendNew(){
@@ -76,10 +59,9 @@ function sendNew(){
 function deletaAluno(){
     let id = sessionStorage.getItem("editaAluno");
     //IMPLEMENTA DELETA RELATORIOS
-
-    if(!alunos.deleteData(parseInt(id))){
+    let resposta = alunos.deleteData(parseInt(id)); 
+    if(!resposta){
         console.log("ERRO");
     }
-
     showMensage("deleta");
 }

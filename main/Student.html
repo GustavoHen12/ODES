@@ -11,7 +11,7 @@
         <div class = "header">
             <nav class = "nav_bar">
                 <ul class = "barGroup">
-                    <li class = "navBarItem"><a href="DadosEscola.html"><img class="iconeNav" src  = "img/arrowBack.png"></a></li>
+                    <li class = "navBarItem" onclick="retornaPagina('Student')"><img class="iconeNav" src  = "img/arrowBack.png"></li>
                     <li class = "navBarItem">Configurações</li>
                     <li class = "navBarItem">Sobre</li>
                     <li class = "navBarItem">Ajuda</li>
@@ -79,7 +79,6 @@
         </div>
     </body>
     <script src="js/iniciaObjetos.js"></script>
-    <script src = "js/funcoes.js"></script>
     <script>
         var edita = sessionStorage.getItem("editaAluno");
         //PEGA ESCOLA SELECIONADA
@@ -134,4 +133,7 @@
             }
         }
     </script>
+    <script src="js/general.js" ></script>
+    <script src="js/messageModel.js" ></script>
+    <script src = "js/studentPage.js"></script>
 </html>

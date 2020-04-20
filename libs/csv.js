@@ -1,3 +1,6 @@
+const { dialog } = require('electron').remote;
+let fs = require('fs');
+
 class File
 {
     constructor(){
@@ -21,6 +24,28 @@ class File
         });
         return str;
     }
+
+    async saveCSV(content)
+    {
+        let WIN = require('electron').remote.getCurrentWindow();
+
+        let options = {
+            title: "Salvar tabela",
+            defaultPath : path,
+            buttonLabel : "Salvar",
+            filters :[{name: 'CSV', extensions: ['csv']}]
+        }
+        //console.log(await dialog.showSaveDialog(WIN, options));
+        let filename = await dialog.showSaveDialog(WIN, options)
+        console.log(filename.filePath);
+        try{
+            fs.writeFileSync(filename.filePath, content, 'utf-8');
+        }
+        catch(e){
+            dialog.showErrorBox("Erro", "não foi possível salvar o arquivo")
+        }
+    }
+
 }
 
 module.exports = {File : File};

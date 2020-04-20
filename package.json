@@ -5,6 +5,7 @@
   "type": "module",
   "module": "commonjs",
   "scripts": {
+    "start": "electron .",
     "pack": "build --dir",
     "dist": "build",
     "pack-win": "build --dir --win",

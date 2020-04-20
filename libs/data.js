@@ -27,12 +27,6 @@ class DataControler
         });    
     }
 
-
-    //deleta tabela
-    deleteDataSet()
-    {
-
-    }
     //NAO FUNCIONA E EU NAO SEI PORQUE
     confUnique(coll, unico)
     {
@@ -78,7 +72,6 @@ class DataControler
     //retorna todos os dados do objeto no formato Javascript
     receiveData()
     {
-        
         var novo = this.tabela.getCollection(this.collection );
         if (novo === null) return null;
         //return  novo.chain().data({removeMeta:true});
@@ -96,6 +89,7 @@ class DataControler
             return 0;
         return (data[tam-1].$loki);
     }
+    
     //a partir de um unico dado retorna todas as informacoes
     //deve ser passado em objeto em query: {'chave':'objeto'}
     //deve ser passado o criterio de ordem em sort: 'chave'

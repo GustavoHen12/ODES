@@ -76,34 +76,7 @@
                 cont.appendChild(construtor.buildEscolas(res[i]));
         }
     </script>
-    <script>
-        function goTo(escola){
-            sessionStorage.setItem('escola', escola);
-            window.location.href = "DadosEscola.html";
-        }
-        
-        function novaEscola(){
-            let escola = new escolasData();
-            escola.nome = document.getElementById("novaEscola").value;
-            
-            escolas.sendData(escola);
-
-            location.reload();//alterar para INIT
-        }
-
-        function novaLista(){
-            var modal = document.getElementById("modal");
-            modal.style.display = "block";
-        }
-
-        //MODAL        
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                fechaModal()
-            }
-        }
-        function fechaModal() {
-            modal.style.display = "none";
-        }
-    </script>
+    <script src="js/general.js" ></script>
+    <script src="js/messageModel.js" ></script>
+    <script src="js/homePage.js"></script>
 </html>

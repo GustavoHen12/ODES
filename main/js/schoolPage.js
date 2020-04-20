@@ -6,31 +6,6 @@ const fileC = require(path.concat("/libs/csv"));
 let File = fileC.File;
 let CSV = new File;
 
-//para salvar arquivo
-let fs = require('fs');
-
-async function saveCSV(content)
-{
-    WIN = require('electron').remote.getCurrentWindow();
-
-    let options = {
-        title: "Salvar tabela",
-        defaultPath : path,
-        buttonLabel : "Salvar",
-        filters :[{name: 'CSV', extensions: ['csv']}]
-    }
-    //console.log(await dialog.showSaveDialog(WIN, options));
-    let filename = await dialog.showSaveDialog(WIN, options)
-    console.log(filename.filePath);
-    try{
-        fs.writeFileSync(filename.filePath, content, 'utf-8');
-    }
-    catch(e){
-        dialog.showErrorBox("Erro", "não foi possível salvar o arquivo")
-    }
-    
-}
-
 function gerarLista(){
     //Pega dados dos alunos
     var escola = sessionStorage.getItem('escola');
@@ -39,36 +14,8 @@ function gerarLista(){
     let lista = CSV.toCsv(alu, ["nome", "turno", "turma", "prof", "deficiencia", "escola"]);
 
     //salva arquivo
-    saveCSV(lista);
+    CSV.saveCSV(lista);
 }
-
-
-
-const removeMessage = {
-    type: 'question',
-    buttons: ['Remover', 'Cancelar'],
-    defaultId: 1,
-    title: 'Message',
-    message: 'Você deseja prosseguir ?',
-    detail: 'escola e todos seus dados removidos',
-};
-
-const exitoMessage = {
-    type: 'info',
-    buttons: ['Voltar para Home'],
-    defaultId: 1,
-    title: 'Message',
-    message: 'Escola e todos seus dados removidos',
-};
-
-const erroMessage = {
-    type: 'info',
-    buttons: ['Voltar para Home'],
-    defaultId: 1,
-    title: 'Message',
-    message: 'Ocorreu um erro',
-};
-
 
 async function removeEscola(){
     //pergunta antes de prosseguir
@@ -94,19 +41,14 @@ async function removeEscola(){
         await dialog.showMessageBox(null, erroMessage);
      
     await dialog.showMessageBox(null, exitoMessage);
-    retornaPag();
+    retornaPagina("School");
 }
-
-function retornaPag(){
-    window.location.href = "Home.html";
-}
-
 
 function editButton(id){
     //passa o id do aluno q sera editado
     //ou null se for para adicionar um novo aluno
     sessionStorage.setItem("editaAluno", id);
-    window.location.href = "NovoAluno.html";
+    window.location.href = "Student.html";
 }
 
 function plusButton(id){
@@ -212,9 +154,6 @@ function atualizaDados(){
     viewMode();
 }
 
-function Reload(){
-    location.reload();
-}
 
 //FECHA MODAL
 var span = document.getElementsByClassName("close")[0];

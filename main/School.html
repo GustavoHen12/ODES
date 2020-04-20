@@ -12,7 +12,7 @@
         <div class = "header">
             <nav class = "nav_bar">
                 <ul class = "barGroup">
-                    <li class = "navBarItem"><a href="Home.html"><img class="iconeNav" src  = "img/arrowBack.png"></a></li>
+                    <li class = "navBarItem" onclick="retornaPagina('School')"><img class="iconeNav" src  = "img/arrowBack.png"></li>
                     <li class = "navBarItem">Configurações</li>
                     <li class = "navBarItem" style="cursor: pointer;" onclick="removeEscola()">Deletar escola</li>
                     <li class = "navBarItem">Sobre</li>
@@ -98,6 +98,8 @@
                 cont.appendChild(construtor.builAlunosEdit(res[i]));
         }
     </script>
-
+    <script src="js/general.js" ></script>
+    <script src="js/messageModel.js" ></script>
     <script src="js/schoolPage.js" ></script>
+
 </html>
