@@ -10,7 +10,7 @@ Desta forma, analizando as opções, constatei que o Electron seria a melhor op�
 
 Com relação ao banco de dados, ele atualmente utiliza o LokiJS. E permite que os dados dos alunos sejam exportados em csv, um formato amplamente difundido, permitindo que estes dados sejam utilizados em outros softwares, como, por exemplo, o Excel.
 
-_"Este projeto ainda esta em desenvolvimento"_
+_***Este projeto ainda esta em desenvolvimento_
 
 Algumas imagens:
 
