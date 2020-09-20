@@ -1,6 +1,5 @@
 #arquivos com dependencias vulneraveis e ultrapassadas
-yarn.lock
-package-lock.json
+/ignorar/*
 #diretorios
 node_modules/
 odes-win32-ia32/
